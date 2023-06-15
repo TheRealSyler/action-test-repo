@@ -1,0 +1,13 @@
+{
+  "name": "action-test-repo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Leonard Grosoli <hileo77@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "eslint": "^8.42.0"
+  }
+}

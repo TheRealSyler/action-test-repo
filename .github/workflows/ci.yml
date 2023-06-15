@@ -1,0 +1,29 @@
+on: [push, pull_request]
+
+permissions:
+  checks: write
+  contents: write
+  packages: read
+
+jobs:
+  eslint:
+    name: EsLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Install Packages
+        run: yarn install --frozen-lockfile
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
+      - name: Run Eslint
+        run: yarn lint
